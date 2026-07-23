@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliakim Agano — Social Media Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF1F4;
+    --bg-card: #FFFFFF;
+    --ink: #131B2E;
+    --ink-soft: #4B5568;
+    --line: #D7DDE5;
+    --green: #16A34A;
+    --coral: #FF6B4A;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(238,241,244,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .nav-name{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+  }
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a:hover{ color: var(--ink); }
+  @media (max-width: 620px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 88px 0 64px;
+  }
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 8px; height:8px;
+    border-radius: 50%;
+    background: var(--green);
+    display:inline-block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; transform: scale(1); }
+    50%{ opacity:.4; transform: scale(0.75); }
+  }
+
+  h1.headline{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 6.4vw, 72px);
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    max-width: 780px;
+  }
+  h1.headline em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  .hero-sub{
+    margin-top: 22px;
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 540px;
+  }
+
+  .hero-cta{
+    display:flex;
+    gap: 14px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: all .18s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--coral); border-color: var(--coral); }
+  .btn-ghost:hover{ background: var(--ink); color:#fff; }
+
+  /* ---------- TICKER (signature element) ---------- */
+  .ticker-panel{
+    margin-top: 56px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 30px 34px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    box-shadow: 0 1px 0 rgba(19,27,46,0.02);
+  }
+  @media (max-width: 620px){
+    .ticker-panel{ grid-template-columns: 1fr; }
+  }
+  .ticker-item{
+    display:flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ticker-item + .ticker-item{
+    border-left: 1px solid var(--line);
+    padding-left: 24px;
+  }
+  @media (max-width: 620px){
+    .ticker-item + .ticker-item{ border-left:none; border-top: 1px solid var(--line); padding-left:0; padding-top:18px; }
+  }
+  .ticker-number{
+    font-family: var(--font-mono);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display:flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .ticker-number .unit{ font-size: 20px; color: var(--green); }
+  .ticker-label{
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* growth chart svg */
+  .chart-row{
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    grid-column: 1 / -1;
+    display:flex;
+    align-items:center;
+    gap: 20px;
+  }
+  .chart-row svg{ flex-shrink:0; }
+  .chart-caption{
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+  }
+  .chart-caption strong{ color: var(--ink); }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .section-title{
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.6vw, 34px);
+    font-weight: 600;
+  }
+  .section-index{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 720px){ .about-grid{ grid-template-columns: 1fr; } }
+  .about-text p{
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    max-width: 60ch;
+  }
+  .about-text strong{ color: var(--ink); font-weight: 600; }
+
+  .skill-list{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .skill-row{
+    display:flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .skill-row:first-child{ border-top: 1px solid var(--line); }
+  .skill-name{ font-weight: 600; }
+  .skill-tag{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service-grid-4{ grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px){ .service-grid-4{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 780px){ .service-grid{ grid-template-columns: 1fr; } }
+  @media (max-width: 560px){ .service-grid-4{ grid-template-columns: 1fr; } }
+  .service-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px;
+  }
+  .service-icon{
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: #F0F5EF;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 18px;
+  }
+  .service-card h3{
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .service-card p{
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- WORK / FEED CARDS ---------- */
+  .feed-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 720px){ .feed-grid{ grid-template-columns: 1fr; } }
+  .feed-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .feed-card-top{
+    padding: 20px 22px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .feed-platform{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 600;
+  }
+  .feed-card h4{
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0 8px;
+    padding: 0 22px;
+  }
+  .feed-card p.desc{
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 0 22px;
+    margin-bottom: 20px;
+  }
+  .feed-stats{
+    display:flex;
+    gap: 22px;
+    border-top: 1px solid var(--line);
+    padding: 14px 22px;
+    background: #FAFBFC;
+  }
+  .feed-stat{
+    display:flex;
+    flex-direction: column;
+  }
+  .feed-stat .num{
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .feed-stat .lbl{
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .placeholder-tag{
+    display:inline-block;
+    margin: 14px 22px 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: #F0F1EC;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    background: var(--ink);
+    color: #fff;
+    border-radius: 24px;
+    padding: 56px 48px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .contact-panel h2{
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 600;
+    max-width: 420px;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact-links a{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+    transition: opacity .15s;
+  }
+  .contact-links a:hover{ opacity: 0.7; }
+  .contact-links .mono{ font-family: var(--font-mono); font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  footer{
+    padding: 32px 0 48px;
+    text-align:center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+  }
+
+  ::selection{ background: var(--coral); color: #fff; }
+
+  @media (prefers-reduced-motion: reduce){
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Eliakim Agano</div>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-top:88px;">
+    <div class="eyebrow">Open to work</div>
+    <h1 class="headline">Growing accounts people <em>actually</em> pay attention to.</h1>
+    <p class="hero-sub">Social media manager and content strategist. I run accounts and blogs from the content calendar to the comment section — and I measure everything by what moves.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:eliakimagano1@gmail.com">Hire me →</a>
+      <a class="btn btn-ghost" href="tel:0759565564">Call 0759 565 564</a>
+    </div>
+
+    <div class="ticker-panel">
+      <div class="ticker-item">
+        <div class="ticker-number">35<span class="unit">%</span></div>
+        <div class="ticker-label">Engagement increase in under 2 months</div>
+      </div>
+      <div class="ticker-item">
+        <div class="ticker-number" style="color:var(--ink-soft);">— <span class="unit" style="color:var(--ink-soft);">clients</span></div>
+        <div class="ticker-label">[Add number of accounts / clients managed]</div>
+      </div>
+      <div class="ticker-item">
+        <div class="ticker-number" style="color:var(--ink-soft);">— <span class="unit" style="color:var(--ink-soft);">blogs</span></div>
+        <div class="ticker-label">[Add number of blogs grown]</div>
+      </div>
+
+      <div class="chart-row">
+        <svg width="180" height="56" viewBox="0 0 180 56" fill="none">
+          <polyline points="4,48 30,42 56,44 82,30 108,26 134,14 176,6" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="176" cy="6" r="4.5" fill="#16A34A"/>
+        </svg>
+        <div class="chart-caption">Typical engagement trend on managed accounts — <strong>up and to the right</strong> within weeks of taking over.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head">
+      <div class="section-title">About</div>
+      <div class="section-index">01 / profile</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I manage social media accounts and personal blogs end to end — content planning, posting, community response, and reporting. Every account I've taken on has seen a <strong>measurable, positive lift in its numbers</strong>, including a <strong>35% jump in engagement in under two months</strong> on one recent account.</p>
+        <p>Alongside management, I bring basic <strong>graphic design</strong> skills to the table, so the content I post is built for the platform, not just dropped onto it.</p>
+        <p>I care about the numbers because clients do — followers are nice, but engagement, reach, and consistency are what I optimize for.</p>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Social Media Management</span><span class="skill-tag">CORE</span></div>
+        <div class="skill-row"><span class="skill-name">Blog Management &amp; Growth</span><span class="skill-tag">CORE</span></div>
+        <div class="skill-row"><span class="skill-name">Content Calendars</span><span class="skill-tag">CORE</span></div>
+        <div class="skill-row"><span class="skill-name">Community Engagement</span><span class="skill-tag">CORE</span></div>
+        <div class="skill-row"><span class="skill-name">Video Editing</span><span class="skill-tag">CORE</span></div>
+        <div class="skill-row"><span class="skill-name">Graphic Design</span><span class="skill-tag">BASIC</span></div>
+        <div class="skill-row"><span class="skill-name">Analytics &amp; Reporting</span><span class="skill-tag">GROWING</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-head">
+      <div class="section-title">What I do</div>
+      <div class="section-index">02 / services</div>
+    </div>
+    <div class="service-grid service-grid-4">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1v16M1 9h16" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Account Management</h3>
+        <p>Day-to-day running of social accounts — posting, scheduling, replying, and keeping the feed consistent.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#16A34A" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Blog Growth</h3>
+        <p>Managing personal blogs from publishing cadence to audience growth, with steady increases in readership.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="6,4 14,9 6,14" stroke="#16A34A" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Video Editing</h3>
+        <p>Cutting and editing engaging short-form video content built for how people actually watch on TikTok and Reels.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#16A34A" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Graphic Design</h3>
+        <p>Simple, on-brand visuals for posts — built to fit the platform and the audience, not just filler graphics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-head">
+      <div class="section-title">Results</div>
+      <div class="section-index">03 / work</div>
+    </div>
+    <div class="feed-grid">
+      <div class="feed-card">
+        <div class="feed-card-top">
+          <span class="feed-platform">TikTok</span>
+        </div>
+        <h4>Prosper Fragrance</h4>
+        <p class="desc">Managed content and posting for this fragrance brand's TikTok account, driving a sharp lift in engagement in under two months.</p>
+        <div class="feed-stats">
+          <div class="feed-stat"><span class="num">+35%</span><span class="lbl">Engagement, &lt;2 months</span></div>
+          <div class="feed-stat"><span class="num">—</span><span class="lbl">[Add follower growth]</span></div>
+        </div>
+      </div>
+      <div class="feed-card">
+        <div class="feed-card-top">
+          <span class="feed-platform">TikTok</span>
+        </div>
+        <h4>Aflewo Eldoret</h4>
+        <p class="desc">Ran content and community engagement for Aflewo Eldoret's TikTok presence, growing the account's numbers over time.</p>
+        <div class="feed-stats">
+          <div class="feed-stat"><span class="num">—</span><span class="lbl">[Add engagement/follower growth]</span></div>
+          <div class="feed-stat"><span class="num">—</span><span class="lbl">[Add posting cadence]</span></div>
+        </div>
+      </div>
+    </div>
+    <span class="placeholder-tag">Plus several private client accounts and blogs — details available on request</span>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-panel">
+      <h2>Let's grow your accounts next.</h2>
+      <div class="contact-links">
+        <a href="mailto:eliakimagano1@gmail.com">eliakimagano1@gmail.com <span class="mono">→ email</span></a>
+        <a href="tel:0759565564">0759 565 564 <span class="mono">→ call / whatsapp</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Eliakim Agano — Social Media Manager</footer>
+
+</body>
+</html>
